@@ -19,7 +19,7 @@ public class Producto {
 	private String descripcionEng;
 	private String img;
 	private boolean enVenta;
-	
+
 	public Producto() {
 		super();
 	}
@@ -129,7 +129,5 @@ public class Producto {
 				+ precio + ", descripcion=" + descripcion + ", descripcionEng=" + descripcionEng + ", img=" + img
 				+ ", enVenta=" + enVenta + "]";
 	}
-	
-	
-	
+
 }
