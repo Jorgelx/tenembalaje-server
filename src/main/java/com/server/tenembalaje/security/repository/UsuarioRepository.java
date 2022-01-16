@@ -8,8 +8,10 @@ import org.springframework.stereotype.Repository;
 import com.server.tenembalaje.security.entity.Usuario;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
-Optional<Usuario> findByNombreUsuario(String nombreUsuario);
-boolean existsByNombreUsuario(String nombreUsuario);
-boolean existsByEmail(String email);
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+	Optional<Usuario> findByNombreUsuario(String nombreUsuario);
+
+	boolean existsByNombreUsuario(String nombreUsuario);
+
+	boolean existsByEmail(String email);
 }

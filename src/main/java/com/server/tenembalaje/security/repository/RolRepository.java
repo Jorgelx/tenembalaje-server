@@ -9,8 +9,7 @@ import com.server.tenembalaje.security.entity.Rol;
 import com.server.tenembalaje.security.enums.RolNombre;
 
 @Repository
-public interface  RolRepository extends JpaRepository <Rol, Integer>{
+public interface RolRepository extends JpaRepository<Rol, Integer> {
 	Optional<Rol> findByRolNombre(RolNombre rolNombre);
-	
 
 }

@@ -1,9 +1,12 @@
 package com.server.tenembalaje.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Producto {
@@ -13,7 +16,8 @@ public class Producto {
 	private int id;
 	private String nombre;
 	private String nombreEng;
-	private String tipo;
+    @ManyToOne(optional = false , fetch = FetchType.EAGER)
+	private TipoProducto tipo;
 	private float precio;
 	private String descripcion;
 	private String descripcionEng;
@@ -24,7 +28,7 @@ public class Producto {
 		super();
 	}
 
-	public Producto(String nombre, String nombreEng, String tipo, float precio, String descripcion,
+	public Producto(String nombre, String nombreEng, TipoProducto tipo, float precio, String descripcion,
 			String descripcionEng, String img, boolean enVenta) {
 		super();
 		this.nombre = nombre;
@@ -37,7 +41,7 @@ public class Producto {
 		this.enVenta = enVenta;
 	}
 
-	public Producto(int id, String nombre, String nombreEng, String tipo, float precio, String descripcion,
+	public Producto(int id, String nombre, String nombreEng, TipoProducto tipo, float precio, String descripcion,
 			String descripcionEng, String img, boolean enVenta) {
 		super();
 		this.id = id;
@@ -75,11 +79,11 @@ public class Producto {
 		this.nombreEng = nombreEng;
 	}
 
-	public String getTipo() {
+	public TipoProducto getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(TipoProducto tipo) {
 		this.tipo = tipo;
 	}
 
