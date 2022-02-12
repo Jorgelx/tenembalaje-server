@@ -13,9 +13,12 @@ public class Noticias {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String titulo;
+	private String tituloEng;
 	private String subtitulo;
+	private String subtituloEng;
 	@Lob
 	private String texto;
+	private String textoEng;
 	private String fecha;
 
 	private String img;
@@ -24,14 +27,67 @@ public class Noticias {
 		super();
 	}
 
-	public Noticias(String titulo, String subtitulo, String texto, String fecha, String img) {
+
+	
+	public Noticias(String titulo, String tituloEng, String subtitulo, String subtituloEng, String texto,
+			String textoEng, String fecha, String img) {
 		super();
 		this.titulo = titulo;
+		this.tituloEng = tituloEng;
 		this.subtitulo = subtitulo;
+		this.subtituloEng = subtituloEng;
 		this.texto = texto;
+		this.textoEng = textoEng;
 		this.fecha = fecha;
 		this.img = img;
 	}
+
+
+
+	public Noticias(int id, String titulo, String tituloEng, String subtitulo, String subtituloEng, String texto,
+			String textoEng, String fecha, String img) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.tituloEng = tituloEng;
+		this.subtitulo = subtitulo;
+		this.subtituloEng = subtituloEng;
+		this.texto = texto;
+		this.textoEng = textoEng;
+		this.fecha = fecha;
+		this.img = img;
+	}
+
+
+	public String getTituloEng() {
+		return tituloEng;
+	}
+
+
+	public void setTituloEng(String tituloEng) {
+		this.tituloEng = tituloEng;
+	}
+
+
+	public String getSubtituloEng() {
+		return subtituloEng;
+	}
+
+
+	public void setSubtituloEng(String subtituloEng) {
+		this.subtituloEng = subtituloEng;
+	}
+
+
+	public String getTextoEng() {
+		return textoEng;
+	}
+
+
+	public void setTextoEng(String textoEng) {
+		this.textoEng = textoEng;
+	}
+
 
 	public int getId() {
 		return id;
@@ -83,8 +139,9 @@ public class Noticias {
 
 	@Override
 	public String toString() {
-		return "Articulo [id=" + id + ", titulo=" + titulo + ", subtitulo=" + subtitulo + ", texto=" + texto
-				+ ", fecha=" + fecha + ", img=" + img + "]";
+		return "Noticias [id=" + id + ", titulo=" + titulo + ", tituloEng=" + tituloEng + ", subtitulo=" + subtitulo
+				+ ", subtituloEng=" + subtituloEng + ", texto=" + texto + ", textoEng=" + textoEng + ", fecha=" + fecha
+				+ ", img=" + img + "]";
 	}
 
 }

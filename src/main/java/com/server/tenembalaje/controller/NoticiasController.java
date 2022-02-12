@@ -41,18 +41,19 @@ public class NoticiasController {
 	@GetMapping("articulo/{id}")
 	public ResponseEntity<NoticiasDTO> art(@PathVariable("id") int id) {
 		Noticias a = articuloService.articulo(id).get();
-		NoticiasDTO artDto = new NoticiasDTO(a.getTitulo(), a.getSubtitulo(), a.getTexto(), a.getImg());
+		NoticiasDTO artDto = new NoticiasDTO(a.getTitulo(), a.getTituloEng(), a.getSubtitulo(), a.getSubtituloEng(), a.getTexto(), a.getTextoEng(), a.getImg(), a.getFecha());
 		return new ResponseEntity<NoticiasDTO>(artDto, HttpStatus.OK);
 	}
 
 	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping(value = "crear")
-	public ResponseEntity<?> register(@RequestBody NoticiasDTO articulo) {
+	public ResponseEntity<?> register(@RequestBody NoticiasDTO noticia) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 		Date date = new Date(System.currentTimeMillis());
 		String fecha = formatter.format(date);
-		Noticias art = new Noticias(articulo.getTitulo(), articulo.getSubtitulo(), articulo.getTexto(), fecha,
-				articulo.getImg());
+		
+		Noticias art = new Noticias(noticia.getTitulo(), noticia.getTituloEng(), noticia.getSubtitulo(), noticia.getSubtituloEng(), noticia.getTexto(), 
+				noticia.getTextoEng(), fecha, noticia.getImg());
 		articuloService.crear(art);
 		return new ResponseEntity<>(new Mensaje("Noticia creada"), HttpStatus.OK);
 	}
