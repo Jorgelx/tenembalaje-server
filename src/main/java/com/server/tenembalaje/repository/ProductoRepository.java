@@ -9,4 +9,5 @@ import com.server.tenembalaje.entity.TipoProducto;
 
 public interface ProductoRepository extends JpaRepository<Producto, Integer> {
 	Optional<List<Producto>> findByTipo(TipoProducto tipo);
+	void deleteByTipo(TipoProducto tipo);
 }

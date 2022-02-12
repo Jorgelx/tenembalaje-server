@@ -5,6 +5,7 @@ public class ProductoDTO {
 	private String nombre;
 	private String nombreEng;
 	private String tipo;
+	private String tipoEng;
 	private float precio;
 	private String descripcion;
 	private String descripcionEng;
@@ -24,7 +25,7 @@ public class ProductoDTO {
 
 
 
-	public ProductoDTO(String nombre, String nombreEng, String tipo, float precio, String descripcion,
+	public ProductoDTO(String nombre, String nombreEng, String tipo ,String tipoEng, float precio, String descripcion,
 			String descripcionEng, String img, boolean enVenta) {
 		super();
 		this.nombre = nombre;
@@ -35,7 +36,18 @@ public class ProductoDTO {
 		this.descripcionEng = descripcionEng;
 		this.img = img;
 		this.enVenta = enVenta;
+		this.tipoEng = tipoEng;
 	}
+
+	public String getTipoEng() {
+		return tipoEng;
+	}
+
+
+	public void setTipoEng(String tipoEng) {
+		this.tipoEng = tipoEng;
+	}
+
 
 	public String getNombre() {
 		return nombre;

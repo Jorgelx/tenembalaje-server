@@ -12,20 +12,31 @@ public class TipoProducto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	String tipo;
+	String tipoEng;
 
 	public TipoProducto(int id, String tipo) {
 		super();
 		this.id = id;
 		this.tipo = tipo;
+		this.tipo = tipoEng;
 	}
 
-	public TipoProducto(String tipo) {
+	public TipoProducto(String tipo, String tipoEng) {
 		super();
 		this.tipo = tipo;
+		this.tipoEng = tipoEng;
 	}
 
 	public TipoProducto() {
 		super();
+	}
+
+	public String getTipoEng() {
+		return tipoEng;
+	}
+
+	public void setTipoEng(String tipoEng) {
+		this.tipoEng = tipoEng;
 	}
 
 	public int getId() {

@@ -38,4 +38,11 @@ public class TipoProductoService {
 	public boolean exist(String tipo) {
 		return tipoRepository.existsByTipo(tipo);
 	}
+	
+	public void delete(int id) {
+		tipoRepository.deleteById(id);
+	}
+	public void deleteByTipo(int id) {
+		tipoRepository.deleteById(id);
+	}
 }

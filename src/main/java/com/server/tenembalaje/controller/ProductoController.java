@@ -43,7 +43,7 @@ public class ProductoController {
 	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/save")
 	public ResponseEntity<?> crear(@RequestBody ProductoDTO productDTO) {
-
+		System.out.println(productDTO.getDescripcionEng());
 		if (StringUtils.isBlank(productDTO.getNombre()))
 			return new ResponseEntity(new Mensaje("Se requiere un nombre"), HttpStatus.BAD_REQUEST);
 		if (productDTO.getPrecio() <= 0)
@@ -54,9 +54,9 @@ public class ProductoController {
 
 		if (!tipoService.exist(productDTO.getTipo())) {
 
-			TipoProducto tipo = new TipoProducto(productDTO.getTipo());
+			
+			TipoProducto tipo = new TipoProducto(productDTO.getTipo(), productDTO.getTipoEng());
 			tipoService.save(tipo);
-
 			Producto product = new Producto(productDTO.getNombre(), productDTO.getNombreEng(), tipo,
 					productDTO.getPrecio(), productDTO.getDescripcion(), productDTO.getDescripcionEng(),
 					productDTO.getImg(), productDTO.isEnVenta());
@@ -91,4 +91,17 @@ public class ProductoController {
 	public ResponseEntity<List<TipoProducto>> tipos() {
 		return  new ResponseEntity<List<TipoProducto>>(tipoService.list(), HttpStatus.OK);
 	}
+	
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@GetMapping("/delete/tipo/{id}")
+	public ResponseEntity<Mensaje> borrarTipo(@PathVariable("id") int id) {
+		TipoProducto tipo = tipoService.findById(id);
+		productService.deleteTipo(tipo);
+		tipoService.delete(id);
+		return new ResponseEntity(new Mensaje("Producto eliminado"), HttpStatus.OK);
+		
+	}
 }
+
+

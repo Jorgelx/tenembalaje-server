@@ -40,4 +40,11 @@ public class ProductoService {
 	public Optional<List<Producto>> getByTipo(TipoProducto tipo) {
 		return productRepository.findByTipo(tipo);
 	}
+	
+	public void delete(int id) {
+		productRepository.deleteById(id);
+	}
+	public void deleteTipo(TipoProducto tipo) {
+		productRepository.deleteByTipo(tipo);
+	}
 }
