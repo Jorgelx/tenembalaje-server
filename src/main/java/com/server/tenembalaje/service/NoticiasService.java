@@ -33,5 +33,9 @@ public class NoticiasService {
 	public void borrar(int id) {
 		articuloRepository.deleteById(id);
 	}
+	
+	public boolean exists(int id) {
+		return articuloRepository.existsById(id);
+	}
 
 }

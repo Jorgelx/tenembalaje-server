@@ -71,13 +71,15 @@ public class NoticiasController {
 	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("editar/{id}")
 	public ResponseEntity<?> actualizar(@PathVariable("id") int id, @RequestBody NoticiasDTO articulo) {
+		if(!articuloService.exists(id))
+			return new ResponseEntity(new Mensaje("La noticia no existe"), HttpStatus.OK);
 		Noticias art = articuloService.articulo(id).get();
 		art.setTitulo(articulo.getTitulo());
 		art.setSubtitulo(articulo.getSubtitulo());
 		art.setTexto(articulo.getTexto());
 		art.setImg(articulo.getImg());
 		articuloService.crear(art);
-		return new ResponseEntity(new Mensaje("articulo creado"), HttpStatus.OK);
+		return new ResponseEntity(new Mensaje("Noticia editada"), HttpStatus.OK);
 
 	}
 }
